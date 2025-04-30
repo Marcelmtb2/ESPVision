@@ -1,0 +1,43 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <title>ESP32 Image Dashboard</title>
+</head>
+<body>
+  <div class="container-out">
+    <h1>ESP32 Image Dashboard</h1>
+
+    <div class="grid-container">
+        <div class="row">
+          <div class="column">
+            <h3>Grayscale (QVGA)</h3>
+            <img id="qvga" src="/static/current/qvga.jpg" alt="Grayscale QVGA" class="preview">
+          </div>
+          <div class="column">
+            <h3>Binary Mask</h3>
+            <img id="mask" src="/static/current/mask.jpg" alt="Binary Mask" class="preview">
+          </div>
+        </div>
+
+        <div class="status">
+          {% if timestamp %}
+            <p>Last valid capture: {{ timestamp }}</p>
+          {% else %}
+            <p>No valid image available.</p>
+          {% endif %}
+        </div>
+    
+        <div class="full-image">
+          <h3>Captured UXGA Color Image</h3>
+          <img id="uxga" src="/static/current/uxga.jpg" alt="Full Resolution UXGA Image" class="full">
+        </div>
+    </div>
+  </div>
+  <script src="/static/update.js"></script>
+</body>
+</html>
